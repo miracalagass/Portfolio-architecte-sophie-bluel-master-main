@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #F7F5EF; /* Arka plan rengi, tasarıma uygun şekilde ayarlandı */
 }
 ol, ul {
 	list-style: none;
@@ -88,6 +89,8 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
+	padding: 0;
+    margin: 0;
 
 }
 nav li {
@@ -95,6 +98,24 @@ nav li {
 	font-size: 1.2em;
 }
 
+nav a {
+    text-decoration: none; /* Alt çizgi kaldırıldı */
+    color: black; /* Varsayılan olarak siyah renkte */
+    font-weight: normal; /* Varsayılan olarak normal kalınlık */
+    transition: font-weight 0.3s; /* Geçiş efekti */
+}
+
+nav a:hover {
+    color: #B1663C; /* Üzerine gelindiğinde renk değişikliği */
+}
+
+nav a:active {
+    font-weight: bold; /* Tıklandığında kalın yap */
+}
+
+nav a:visited {
+    color: black; /* Ziyaret edilen link rengi siyah kalmalı */
+}
 li:hover {
 	color: #B1663C;
 }
@@ -125,6 +146,112 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+#login {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 50px 0;
+    text-align: center; /* Tüm formu ortalamak için kullanılır */
+}
+
+#login h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; /* Başlık boyutunu ayarlayın */
+    font-weight: 700;
+    color: #1D6154; /* Başlık rengi */
+    margin-bottom: 20px;
+    text-align: center; /* Başlığı ortala */
+}
+
+#login form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center; /* Form elemanlarını ortala */
+}
+
+#login label {
+    text-align: left;
+    font-size: 1em;
+    width: 100%; /* Label genişliğini form genişliğiyle hizala */
+    margin-bottom: 5px;
+    color: #333; /* Label rengi */
+    display: block;
+}
+
+#login input[type="email"],
+#login input[type="password"] {
+    width: 100%;
+    max-width: 300px; /* Maksimum genişlik */
+    height: 45px;
+    font-size: 1em;
+    border: 1px solid #ddd;
+    padding: 0 10px;
+    border-radius: 4px; /* Kenarları hafif yuvarlat */
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+#login input[type="submit"] {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    color: white;
+    background-color: #1D6154;
+    margin: 20px 0;
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+    padding: 10px 0;
+    border: none;
+    border-radius: 60px;
+    cursor: pointer; /* El işareti yap */
+    transition: background-color 0.3s; /* Hover durumları için geçiş efekti */
+    align-self: center; /* Butonu ortala */
+}
+
+#login input[type="submit"]:hover {
+    background-color: #14533E; /* Hover durumunda koyulaşan buton rengi */
+}
+
+#login a {
+    color: #1D6154;
+    font-size: 0.9em;
+    text-decoration: none;
+    margin-top: 15px;
+    align-self: center; /* Linki ortala */
+}
+
+#login a:hover {
+    text-decoration: underline; /* Hover durumunda alt çizgi ekle */
+}
+.filter-menu {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.filter-button {
+    background-color: #fff;
+    border: 1px solid #1D6154;
+    color: #1D6154;
+    border-radius: 60px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    font-weight: 700;
+    font-size: 16px;
+	line-height: 19.2px;
+	font-family: 'Syne';
+}
+
+.filter-button:hover, .filter-button.active {
+    background-color: #1D6154;;
+    color: #fff;
+}
+
+.filter-button:focus {
+    outline: none;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
