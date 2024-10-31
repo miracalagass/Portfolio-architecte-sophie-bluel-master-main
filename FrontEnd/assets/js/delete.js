@@ -10,16 +10,17 @@ async function deletePhoto(photoId) {
 
         if (response.ok) {
             alert("Photo supprimée avec succès !"); // Message de succès de suppression
+            displayAllProject()
             return true; // Retourne vrai pour une réponse réussie
         } else {
             console.error("La suppression a échoué :", response.status); // Message d'erreur
             return false; // Retourne faux pour une réponse échouée
-        }
+        } 
     } catch (error) {
         console.error("Erreur de suppression :", error); // Message d'erreur
         alert("Une erreur est survenue lors de la suppression."); // Une erreur s'est produite lors de la suppression
         return false; // Retourne faux en cas d'erreur
-    }
+    } 
 }
 
 // Ici, vous pouvez ajouter les écouteurs d'événements nécessaires dans le fichier delete.js
