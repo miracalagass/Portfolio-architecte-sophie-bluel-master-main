@@ -86,6 +86,8 @@ document.addEventListener("DOMContentLoaded", function() {
             if (response.ok) {
                 const data = await response.json();
                 alert("Photo téléchargée avec succès !"); // Başarılı yükleme mesajı
+                displayAllProject()
+                displayGalerieModal()
                 console.log(data); // Affiche les données téléchargées dans la console
             } else {
                 alert("Le téléchargement a échoué."); // Hata mesajı

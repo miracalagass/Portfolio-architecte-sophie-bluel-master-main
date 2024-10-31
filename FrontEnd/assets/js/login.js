@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const loginForm = document.getElementById("loginForm");
 
     if (loginForm) {
-        console.log("Formulaire de connexion trouvé."); // Test amaçlı log
+        console.log("Formulaire de connexion trouvé."); 
 
         loginForm.addEventListener("submit", async function(event) {
             event.preventDefault(); // Empêche le rechargement de la page
@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const email = document.getElementById("email").value;
             const password = document.getElementById("password").value;
 
-            console.log("Email et mot de passe récupérés :", email, password); // Test amaçlı log
+            console.log("Email et mot de passe récupérés :", email, password);
 
             // Contrôle regex pour l'email
             const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/gm;

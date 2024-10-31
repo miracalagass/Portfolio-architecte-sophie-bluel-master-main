@@ -20,41 +20,9 @@ document.addEventListener("DOMContentLoaded", function() {
             modalOverlay.style.display = 'block'; // Rendre l'overlay visible
 
             // Copier les projets de la page d'accueil dans la galerie modale
-            const siteGalleryFigures = document.querySelectorAll(".gallery figure");
-
             modalGallery.innerHTML = ""; // Nettoyer la galerie
-            siteGalleryFigures.forEach(figure => {
-                const clonedFigure = figure.cloneNode(true); // Cloner les figures existantes
-                
-                // Obtenez l'ID de la figure d'origine et ajoutez-le à clonedFigure
-                const photoId = figure.getAttribute("data-photo-id"); // Obtenir l'ID de la figure d'origine
-                clonedFigure.setAttribute("data-photo-id", photoId); // Ajouter l'ID à clonedFigure
+            displayGalerieModal(modalGallery)
 
-                // Ajoutons l'icône de la poubelle
-                const deleteIcon = document.createElement("button");
-                deleteIcon.classList.add("delete-icon");
-                deleteIcon.innerHTML = '<span class="delete-container"><i class="fa-solid fa-trash-can"></i></span>'; // Icône de poubelle de Font Awesome
-                
-                // Fonction de suppression
-                deleteIcon.addEventListener("click", function() {
-                    if (!photoId) {
-                        console.error("Fotoğraf ID'si bulunamadı!"); // Hata mesajı
-                        return; // Sortir si l'ID n'existe pas
-                    }
-                    
-                    // Envoyer la demande de suppression à l'API
-                    deletePhoto(photoId).then(success => {
-                        if (success) {
-                            clonedFigure.remove(); // Supprimer la figure si la suppression API a réussi
-                        } else {
-                            alert("La suppression a échoué."); // Message d'erreur
-                        }
-                    });
-                });
-
-                clonedFigure.appendChild(deleteIcon); // Ajouter l'icône de poubelle 
-                modalGallery.appendChild(clonedFigure); // Ajouter à la galerie modale
-            });
         });
     } else {
         console.error("edit-projects-btn bulunamadı !"); // Hata mesajı
@@ -133,3 +101,38 @@ document.addEventListener("DOMContentLoaded", function() {
     populateCategories(); // Remplit les catégories
 });
 
+function displayGalerieModal(modalGallery){
+    const siteGalleryFigures = document.querySelectorAll(".gallery figure");
+    siteGalleryFigures.forEach(figure => {
+        const clonedFigure = figure.cloneNode(true); // Cloner les figures existantes
+        
+        // Obtenez l'ID de la figure d'origine et ajoutez-le à clonedFigure
+        const photoId = figure.getAttribute("data-photo-id"); // Obtenir l'ID de la figure d'origine
+        clonedFigure.setAttribute("data-photo-id", photoId); // Ajouter l'ID à clonedFigure
+
+        // Ajoutons l'icône de la poubelle
+        const deleteIcon = document.createElement("button");
+        deleteIcon.classList.add("delete-icon");
+        deleteIcon.innerHTML = '<span class="delete-container"><i class="fa-solid fa-trash-can"></i></span>'; // Icône de poubelle de Font Awesome
+        
+        // Fonction de suppression
+        deleteIcon.addEventListener("click", function() {
+            if (!photoId) {
+                console.error("Fotoğraf ID'si bulunamadı!"); // Hata mesajı
+                return; // Sortir si l'ID n'existe pas
+            }
+            
+            // Envoyer la demande de suppression à l'API
+            deletePhoto(photoId).then(success => {
+                if (success) {
+                    clonedFigure.remove(); // Supprimer la figure si la suppression API a réussi
+                } else {
+                    alert("La suppression a échoué."); // Message d'erreur
+                }
+            });
+        });
+
+        clonedFigure.appendChild(deleteIcon); // Ajouter l'icône de poubelle 
+        modalGallery.appendChild(clonedFigure); // Ajouter à la galerie modale
+    });
+}

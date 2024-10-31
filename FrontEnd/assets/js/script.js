@@ -63,7 +63,7 @@ function filterProjects(categoryName) {
             const category = categories.find(cat => cat.name === categoryName);
             return project.categoryId === category.id;
         });
-
+        console.log(filteredProjects)
     const gallery = document.querySelector(".gallery");
     gallery.innerHTML = ""; // Nettoie la galerie
 
@@ -98,7 +98,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // Si l'utilisateur est connecté
     if (authToken) {
         document.body.classList.add('logged-in'); // Ajoute la classe logged-in
-        loginButton.textContent = "Déconnexion"; // Change le bouton de connexion en déconnexion
+        loginButton.textContent = "Logout"; // Change le bouton de connexion en déconnexion
 
         // Montre le bouton Modifier uniquement pour l'affichage admin
         if (modifierButton) {
@@ -128,15 +128,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
-async function initializePage() {
-    // Appelle les fonctions nécessaires pour initialiser la page.
-    await displayAllProject();
-    await displayCategories();
-}
-
 async function displayAllProject() {
     await getAllProjects();
     filterProjects("Tous");
+}
+
+async function initializePage() {
+    await displayCategories(); // Önce kategorileri yükle
+    await displayAllProject(); // Sonra projeleri yükle ve filtrele
 }
 
 initializePage();
