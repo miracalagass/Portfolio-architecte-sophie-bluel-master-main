@@ -85,16 +85,20 @@ document.addEventListener("DOMContentLoaded", function() {
     
             if (response.ok) {
                 const data = await response.json();
-                alert("Photo téléchargée avec succès !"); // Başarılı yükleme mesajı
+                alert("Photo téléchargée avec succès !"); // Message de téléchargement réussi
+                // Supprimer l'image nouvellement chargée de la fenêtre modale
+                uploadedImage.style.display = 'none';
+                fileUploadInput.value = "";
+                titleInput.value = "";
+                validerButton.disabled = true;
                 displayAllProject()
                 displayGalerieModal()
                 console.log(data); // Affiche les données téléchargées dans la console
             } else {
-                alert("Le téléchargement a échoué."); // Hata mesajı
+                alert("Le téléchargement a échoué.");
             }
         } catch (error) {
-            console.error("Erreur de téléchargement :", error); // Hata mesajı
-            alert("Une erreur s'est produite lors du téléchargement."); // Yükleme sırasında bir hata oluştu
+            console.error("Erreur de téléchargement :", error); 
         }
     });
 });
